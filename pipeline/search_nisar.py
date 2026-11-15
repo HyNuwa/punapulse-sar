@@ -75,6 +75,38 @@ def search(product, start=None, end=None, bbox=config.AOI_BBOX):
     return rows
 
 
+def is_dual_pol(r):
+    return "HV" in str(r.get("polarization") or "")
+
+
+def filter_rows(rows, args):
+    """Manual selection: --maturity / --track / --frame / --dates. One product per date (latest version)."""
+    keep = [r for r in rows if is_dual_pol(r) or args.product == "GUNW"]
+    if args.maturity:
+        keep = [r for r in keep if r["maturity"] == args.maturity.upper()]
+    if args.track is not None:
+        keep = [r for r in keep if r["track"] == args.track]
+    if args.frame is not None:
+        keep = [r for r in keep if r["frame"] == args.frame]
+    if args.dates:
+        wanted = {d.strip() for d in args.dates.split(",") if d.strip()}
+        keep = [r for r in keep if (r["start"] or "")[:10] in wanted]
+        missing = wanted - {(r["start"] or "")[:10] for r in keep}
+        if missing:
+            print(f"WARNING: no matching product for {sorted(missing)}")
+    by_date = {}
+    for r in sorted(keep, key=lambda r: r["scene"] or ""):   # later product version (_002) wins
+        by_date[(r["start"] or "")[:10]] = r
+    sel = [by_date[d] for d in sorted(by_date)]
+    if not args.dates:
+        sel = sel[-args.max_scenes:]
+    combos = {(r["maturity"], r["track"], r["direction"]) for r in sel}
+    if len(combos) > 1:
+        print(f"WARNING: selection mixes maturity/track/direction {sorted(map(str, combos))}")
+    info = {"mode": "manual", "maturity": args.maturity, "track": args.track, "frame": args.frame, "dates": args.dates}
+    return sel, info
+
+
 def pick_stack(rows, max_scenes):
     """Pick one maturity level and one track/direction so dates are comparable."""
     if not rows:
@@ -111,6 +143,10 @@ def main():
     ap.add_argument("--start", help="YYYY-MM-DD")
     ap.add_argument("--end", help="YYYY-MM-DD")
     ap.add_argument("--max-scenes", type=int, default=6, help="max dates to keep in the selected stack")
+    ap.add_argument("--maturity", choices=["VALIDATED", "PROVISIONAL", "BETA"], help="manual selection: maturity level")
+    ap.add_argument("--track", type=int, help="manual selection: track number (e.g. 169)")
+    ap.add_argument("--frame", type=int, help="manual selection: frame number (e.g. 100)")
+    ap.add_argument("--dates", help="manual selection: comma-separated YYYY-MM-DD acquisition dates")
     args = ap.parse_args()
 
     config.RAW_DIR.mkdir(parents=True, exist_ok=True)
@@ -124,11 +160,14 @@ def main():
         print(f"{(r['start'] or '')[:10]:<11} {r['maturity']:<12} {str(r['track']):>5} {str(r['frame']):>5} "
               f"{str(r['direction']):<11} {str(r['polarization']):<10} {str(r['size_mb']):>8}  {r['scene']}")
 
-    if args.product == "GUNW":
+    manual = args.maturity or args.track is not None or args.dates or args.frame is not None
+    if manual:
+        sel, info = filter_rows(rows, args)
+    elif args.product == "GUNW":
         sel = rows[-args.max_scenes:]
         info = {"note": "GUNW pairs are listed as found; choose pairs from the same track."}
     else:
-        sel, info = pick_stack(rows, args.max_scenes)
+        sel, info = pick_stack([r for r in rows if is_dual_pol(r)] or rows, args.max_scenes)
     sel_path = config.RAW_DIR / f"selected_{args.product.lower()}.json"
     sel_path.write_text(json.dumps({"info": info, "scenes": sel}, indent=2))
     print(f"\nSelected {len(sel)} products -> {sel_path}")
