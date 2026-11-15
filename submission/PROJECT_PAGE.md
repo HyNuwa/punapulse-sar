@@ -22,7 +22,7 @@ A before/after swipe, hectares per user-drawn zone, and rainfall context from NA
 `[30-second video URL, public, no login]` (or up to 7 slides; keep within the official limit)
 
 ## Link to final project
-`https://YOUR-USER.github.io/punapulse-sar/` · code: `https://github.com/YOUR-USER/punapulse-sar`
+`https://hynuwa.github.io/punapulse-sar/` · code: `https://github.com/HyNuwa/punapulse-sar`
 
 ## Project details
 

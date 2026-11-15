@@ -5,7 +5,7 @@ NASA Space Apps Challenge 2026 · Challenge: *Dancing with the SARs*
 
 PunaPulse SAR is an open-source web app plus a small Python pipeline. It turns NASA-ISRO **NISAR** radar products into maps that anyone can read. The target is a high-Andean salt flat in the "Lithium Triangle", where lithium brine is pumped into large evaporation ponds. Local communities, researchers and regulators ask what is changing on the surface: how far the ponds spread, what happens to the surrounding *vegas* (high-Andean wetlands), and whether the ground moves. That information is often closed or hard to interpret. NISAR images the site every 12 days, day or night and through cloud and dust, with free and open data.
 
-> **Live app:** `https://YOUR-USER.github.io/punapulse-sar/` (GitHub Pages, folder `docs/`)
+> **Live app:** `https://hynuwa.github.io/punapulse-sar/` (GitHub Pages, folder `docs/`)
 
 ![Evidence labels](https://img.shields.io/badge/evidence-observed%20%7C%20derived%20%7C%20context%20%7C%20hypothesis-555)
 
