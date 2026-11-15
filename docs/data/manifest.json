@@ -1,8 +1,239 @@
 {
   "project": "PunaPulse SAR",
-  "aoi": {"name": "Salar de Olaroz-Cauchari (Jujuy, Argentina)", "bbox": [-66.85, -23.75, -66.55, -23.20]},
-  "scenes": [],
-  "changes": [],
+  "aoi": {
+    "name": "Salar de Olaroz-Cauchari (Jujuy, Argentina)",
+    "bbox": [
+      -66.85,
+      -23.75,
+      -66.55,
+      -23.2
+    ]
+  },
+  "scenes": [
+    {
+      "id": "2025-11-09",
+      "date": "2025-11-09",
+      "datetime": "2025-11-09T22:38:44",
+      "file": "NISAR_L2_PR_GCOV_004_169_D_100_2005_DHDH_A_20251109T223844_20251109T223919_P05023_N_F_J_001.h5",
+      "maturity": "PROVISIONAL",
+      "track": 169,
+      "frame": 100,
+      "direction": "DESCENDING",
+      "epsg_source": 32719,
+      "polarizations": [
+        "HHHH",
+        "HVHV"
+      ],
+      "layers": {
+        "rgb": "data/rgb_2025-11-09.webp",
+        "hh": "data/hh_2025-11-09.webp",
+        "dark": "data/dark_2025-11-09.webp"
+      },
+      "stats": {
+        "aoi_valid_ha": 187635.9,
+        "dark_ha": 29897.4,
+        "dark_threshold_db": -20.0,
+        "zones": {
+          "Whole AOI": {
+            "valid_ha": 187635.9,
+            "mean_hh_db": -16.93,
+            "mean_hv_db": -21.71,
+            "dark_ha": 29897.4
+          }
+        }
+      }
+    },
+    {
+      "id": "2026-02-13",
+      "date": "2026-02-13",
+      "datetime": "2026-02-13T22:38:49",
+      "file": "NISAR_L2_PR_GCOV_012_169_D_100_2005_DHDH_A_20260213T223849_20260213T223923_P05023_N_F_J_001.h5",
+      "maturity": "PROVISIONAL",
+      "track": 169,
+      "frame": 100,
+      "direction": "DESCENDING",
+      "epsg_source": 32719,
+      "polarizations": [
+        "HHHH",
+        "HVHV"
+      ],
+      "layers": {
+        "rgb": "data/rgb_2026-02-13.webp",
+        "hh": "data/hh_2026-02-13.webp",
+        "dark": "data/dark_2026-02-13.webp"
+      },
+      "stats": {
+        "aoi_valid_ha": 187635.9,
+        "dark_ha": 37936.9,
+        "dark_threshold_db": -20.0,
+        "zones": {
+          "Whole AOI": {
+            "valid_ha": 187635.9,
+            "mean_hh_db": -14.92,
+            "mean_hv_db": -20.53,
+            "dark_ha": 37936.9
+          }
+        }
+      }
+    },
+    {
+      "id": "2026-06-13",
+      "date": "2026-06-13",
+      "datetime": "2026-06-13T22:38:47",
+      "file": "NISAR_L2_PR_GCOV_022_169_D_100_2005_DHDH_A_20260613T223847_20260613T223922_P05023_N_F_J_001.h5",
+      "maturity": "PROVISIONAL",
+      "track": 169,
+      "frame": 100,
+      "direction": "DESCENDING",
+      "epsg_source": 32719,
+      "polarizations": [
+        "HHHH",
+        "HVHV"
+      ],
+      "layers": {
+        "rgb": "data/rgb_2026-06-13.webp",
+        "hh": "data/hh_2026-06-13.webp",
+        "dark": "data/dark_2026-06-13.webp"
+      },
+      "stats": {
+        "aoi_valid_ha": 187635.9,
+        "dark_ha": 40089.0,
+        "dark_threshold_db": -20.0,
+        "zones": {
+          "Whole AOI": {
+            "valid_ha": 187635.9,
+            "mean_hh_db": -17.32,
+            "mean_hv_db": -22.99,
+            "dark_ha": 40089.0
+          }
+        }
+      }
+    },
+    {
+      "id": "2026-10-11",
+      "date": "2026-10-11",
+      "datetime": "2026-10-11T22:38:43",
+      "file": "NISAR_L2_PR_GCOV_032_169_D_100_2005_DHDH_A_20261011T223843_20261011T223918_P05023_N_F_J_001.h5",
+      "maturity": "PROVISIONAL",
+      "track": 169,
+      "frame": 100,
+      "direction": "DESCENDING",
+      "epsg_source": 32719,
+      "polarizations": [
+        "HHHH",
+        "HVHV"
+      ],
+      "layers": {
+        "rgb": "data/rgb_2026-10-11.webp",
+        "hh": "data/hh_2026-10-11.webp",
+        "dark": "data/dark_2026-10-11.webp"
+      },
+      "stats": {
+        "aoi_valid_ha": 187635.9,
+        "dark_ha": 32322.8,
+        "dark_threshold_db": -20.0,
+        "zones": {
+          "Whole AOI": {
+            "valid_ha": 187635.9,
+            "mean_hh_db": -16.97,
+            "mean_hv_db": -21.95,
+            "dark_ha": 32322.8
+          }
+        }
+      }
+    }
+  ],
+  "changes": [
+    {
+      "from": "2025-11-09",
+      "to": "2026-02-13",
+      "layer": "data/change_2025-11-09_2026-02-13.webp",
+      "stats": {
+        "compared_ha": 187635.9,
+        "increase_ha": 108663.4,
+        "decrease_ha": 22815.4,
+        "new_dark_ha": 17674.2,
+        "lost_dark_ha": 9634.8,
+        "threshold_db": 2.0
+      }
+    },
+    {
+      "from": "2026-02-13",
+      "to": "2026-06-13",
+      "layer": "data/change_2026-02-13_2026-06-13.webp",
+      "stats": {
+        "compared_ha": 187635.9,
+        "increase_ha": 9796.5,
+        "decrease_ha": 109654.8,
+        "new_dark_ha": 10070.8,
+        "lost_dark_ha": 7918.7,
+        "threshold_db": 2.0
+      }
+    },
+    {
+      "from": "2026-06-13",
+      "to": "2026-10-11",
+      "layer": "data/change_2026-06-13_2026-10-11.webp",
+      "stats": {
+        "compared_ha": 187635.9,
+        "increase_ha": 11934.5,
+        "decrease_ha": 653.6,
+        "new_dark_ha": 3125.8,
+        "lost_dark_ha": 10892.0,
+        "threshold_db": 2.0
+      }
+    },
+    {
+      "from": "2025-11-09",
+      "to": "2026-10-11",
+      "layer": "data/change_2025-11-09_2026-10-11.webp",
+      "stats": {
+        "compared_ha": 187635.9,
+        "increase_ha": 4822.1,
+        "decrease_ha": 7991.9,
+        "new_dark_ha": 8930.6,
+        "lost_dark_ha": 6505.2,
+        "threshold_db": 2.0
+      }
+    }
+  ],
   "interferograms": [],
-  "warnings": []
+  "warnings": [],
+  "bounds": [
+    [
+      -23.75,
+      -66.85
+    ],
+    [
+      -23.2,
+      -66.55
+    ]
+  ],
+  "grid": {
+    "epsg": 3857,
+    "pixel_m": 25.0,
+    "nx": 1336,
+    "ny": 2671,
+    "boxcar": 3
+  },
+  "display": {
+    "hh_db": [
+      -25.0,
+      0.0
+    ],
+    "hv_db": [
+      -32.0,
+      -8.0
+    ],
+    "ratio_db": [
+      0.0,
+      15.0
+    ],
+    "change_db": [
+      -8,
+      8
+    ]
+  },
+  "generated": "2026-11-15T23:38:46Z",
+  "precip": "data/precip.json"
 }
