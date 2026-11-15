@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- SI disclosure: drafted with assistance from Claude (Anthropic); reviewed by the PunaPulse SAR team. -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PunaPulse SAR · NISAR radar watch over Salar de Olaroz-Cauchari</title>
+  <meta name="description" content="Open-source NISAR L-band radar viewer for surface change in the Salar de Olaroz-Cauchari, Jujuy, Argentina. NASA Space Apps Challenge 2026 - Dancing with the SARs.">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">◐</span>
+      <div>
+        <h1>PunaPulse SAR</h1>
+        <p>NISAR L-band radar watch over the Salar de Olaroz-Cauchari · Jujuy, Argentina</p>
+      </div>
+    </div>
+    <button id="togglePanel" class="ghost" aria-controls="panel" aria-expanded="true">Panel</button>
+  </header>
+
+  <main class="layout">
+    <aside id="panel" class="panel">
+      <section id="status" class="card status"></section>
+
+      <section class="card">
+        <h2>Compare dates</h2>
+        <label>Layer
+          <select id="layerSel">
+            <option value="rgb">Dual-pol composite (R=HH G=HV B=HH/HV)</option>
+            <option value="hh">HH backscatter (dB)</option>
+            <option value="dark">Low-backscatter surface (candidate brine / water)</option>
+          </select>
+        </label>
+        <div class="row">
+          <label>Before<select id="beforeSel"></select></label>
+          <label>After<select id="afterSel"></select></label>
+        </div>
+        <label class="check"><input type="checkbox" id="swipeChk" checked> Swipe before / after</label>
+        <label>Opacity <input type="range" id="opacity" min="0" max="1" step="0.05" value="0.9"></label>
+        <div id="layerLegend" class="legend"></div>
+      </section>
+
+      <section class="card">
+        <h2>Change map <span class="tag derived">Derived</span></h2>
+        <label>Pair<select id="changeSel"><option value="">Off</option></select></label>
+        <div class="legend">
+          <div class="bar diverging"></div>
+          <div class="scale"><span>−8 dB<br>darker</span><span>no change<br>hidden</span><span>+8 dB<br>brighter</span></div>
+          <p class="hint">Blue = backscatter dropped (smoother or wetter surface, e.g. new brine). Red = rose (rougher, drier, new structures). |change| below the threshold is hidden.</p>
+        </div>
+        <div id="changeStats" class="stats"></div>
+      </section>
+
+      <section class="card" id="ifgCard" hidden>
+        <h2>Interferogram <span class="tag exploratory">Exploratory</span></h2>
+        <label>Show<select id="ifgSel"><option value="">Off</option></select></label>
+        <p class="hint" id="ifgHint"></p>
+      </section>
+
+      <section class="card">
+        <h2>Zones &amp; time series</h2>
+        <label>Zone<select id="zoneSel"></select></label>
+        <div id="zoneStats" class="stats"></div>
+        <div id="chart" class="chart" role="img" aria-label="Low-backscatter area per date and monthly precipitation"></div>
+        <button id="drawBtn" class="ghost small">Draw a new zone</button>
+        <div id="drawOut" hidden>
+          <p class="hint">Copy this feature into <code>docs/data/zones.geojson</code> (inside <code>"features": [ ]</code>), give it a name, then re-run <code>python -m pipeline.process_gcov</code>.</p>
+          <textarea id="drawText" rows="6" readonly></textarea>
+          <button id="copyBtn" class="ghost small">Copy</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>How to read this</h2>
+        <ul class="evidence">
+          <li><span class="tag observed">Observed</span> NISAR L-band radar backscatter or phase, as delivered by NASA/ASF.</li>
+          <li><span class="tag derived">Derived</span> Computed by us from NISAR (thresholds, differences, hectares).</li>
+          <li><span class="tag context">Context</span> Non-radar layers: optical basemap, places, NASA POWER rain.</li>
+          <li><span class="tag hypothesis">Hypothesis</span> Possible physical drivers. Not proven by this tool.</li>
+        </ul>
+        <details>
+          <summary>Why radar here?</summary>
+          <p>NISAR sends its own microwave pulses, so it images day and night, every 12 days, through cloud and dust. Radar is sensitive to <b>roughness</b> and <b>moisture</b>: calm brine in evaporation ponds reflects the pulse away (very dark), rough salt crust and built structures send it back (bright), and wetter soil in the <i>vegas</i> (high-Andean wetlands) raises backscatter.</p>
+        </details>
+        <details>
+          <summary>Limits (please read)</summary>
+          <ul>
+            <li>Smooth salt crust can be as dark as brine. Check the optical basemap and the change between dates before calling something a pond.</li>
+            <li>Only compare dates from the same track, direction and data maturity (the app warns you).</li>
+            <li>A single 12-day interferogram is not a subsidence rate; atmospheric delay over the Andes can exceed mm-level signals.</li>
+            <li>Rain is a coarse (~50 km) NASA POWER estimate at the AOI centre, for context only.</li>
+          </ul>
+        </details>
+        <details>
+          <summary>Hypotheses we test</summary>
+          <ul>
+            <li><span class="tag hypothesis">Hypothesis</span> Growth of low-backscatter area inside pond fields between dates reflects expansion of brine evaporation ponds.</li>
+            <li><span class="tag hypothesis">Hypothesis</span> Backscatter drops in vegas outside the rainy season (Dec-Mar) would point to non-climatic drivers worth field verification.</li>
+          </ul>
+        </details>
+      </section>
+
+      <footer class="credits">
+        <p><b>Data:</b> NISAR L2 GCOV / GUNW (NASA-ISRO, distributed by ASF DAAC) · NASA POWER · NASA GIBS (MODIS) · Esri World Imagery · © OpenStreetMap contributors.</p>
+        <p>NASA Space Apps Challenge 2026 · <i>Dancing with the SARs</i> · Open source (MIT). Built with help from super-intelligence tools; see README for disclosure.</p>
+      </footer>
+    </aside>
+
+    <section class="mapwrap">
+      <div id="map"></div>
+      <div id="swipe" class="swipe" hidden><div class="handle" tabindex="0" role="slider" aria-label="Swipe before/after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">⇔</div></div>
+      <div id="swipeLabels" class="swipelabels" hidden><span id="lblBefore"></span><span id="lblAfter"></span></div>
+      <div id="banner" class="banner" hidden></div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

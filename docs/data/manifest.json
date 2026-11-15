@@ -1,0 +1,8 @@
+{
+  "project": "PunaPulse SAR",
+  "aoi": {"name": "Salar de Olaroz-Cauchari (Jujuy, Argentina)", "bbox": [-66.85, -23.75, -66.55, -23.20]},
+  "scenes": [],
+  "changes": [],
+  "interferograms": [],
+  "warnings": []
+}

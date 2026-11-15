@@ -1,0 +1,6 @@
+asf_search>=8.0
+h5py>=3.8
+numpy>=1.24
+pyproj>=3.5
+Pillow>=9.5
+requests>=2.28
