@@ -47,7 +47,13 @@ As an exploratory layer, it also shows one NISAR GUNW interferogram (coherence a
 
 The low-backscatter area per date gives a simple indicator of the pond footprint. The change map shows where the surface became smoother or wetter (blue) or rougher or drier (red). The viewer is a static Leaflet app on GitHub Pages: no server, free to host, and easy for anyone to fork for another salar.
 
-**Results so far.** `[Fill after running: e.g. "Between [date] and [date], the low-backscatter surface inside the [zone] grew from [x] ha to [y] ha (+[z] ha), during a month with [r] mm of rain (NASA POWER)."]`
+**Results so far** (NISAR L2 GCOV, PROVISIONAL, track 169 descending, frame 100, 4 dates: 2025-11-09, 2026-02-13, 2026-06-13, 2026-10-11, HH threshold −20 dB):
+- **The salar dances with the seasons.** Inside the Salar de Olaroz (wellfield zone), low-backscatter (smooth or wet) surface grew from 19,157 ha in November 2025 to 25,761 ha in February 2026 (+34%), during the summer rains. It was still 26,160 ha in June, and contracted to 20,956 ha by October 2026. Over the same period, the surrounding slopes became brighter (whole-AOI mean HH rose from −16.9 to −14.9 dB), which fits wetter soil.
+- **Pond fields, end of dry season to end of dry season (11 months apart).**
+  - Southern pond field (Cauchari zone): low-backscatter surface went from 2,656 ha to 3,033 ha (+378 ha, +14%).
+  - Northern pond field (Olaroz zone): stayed between 1,047 ha and 1,268 ha.
+- **Caution.** The southern change is smaller than that zone's own seasonal swing (up to 4,159 ha), and the zones include ground around the ponds. We therefore report it as a signal to verify, not as proof of pond expansion.
+- **Hypotheses.** Rain-fed surface water darkens the flat salar in summer. Salt harvesting or crystallisation could brighten individual ponds. Field and optical checks are needed for both.
 
 **Benefits.** The data is open, repeatable every 12 days, and independent of company reporting or cloud-free optical images. A community member can use the swipe. A researcher can download the numbers. A regulator gets a consistent footprint series.
 
