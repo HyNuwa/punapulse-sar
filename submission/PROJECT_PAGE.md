@@ -1,5 +1,7 @@
 # Space Apps project page: text ready to paste (English)
 
+**NASA Space Apps Challenge 2026 · Local event: Salta, Argentina · Challenge: Dancing with the SARs**
+
 > Fill in every `[ ]` after running the pipeline. Do not paste numbers you have not computed.
 > Check the field names against the live project-submission form.
 
