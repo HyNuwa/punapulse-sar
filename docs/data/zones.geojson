@@ -1,4 +1,5 @@
-{
-  "type": "FeatureCollection",
-  "features": []
-}
+{"type":"FeatureCollection","features":[
+{"type":"Feature","properties":{"name":"Ponds south (Cauchari)"},"geometry":{"type":"Polygon","coordinates":[[[-66.78795,-23.6187],[-66.78726,-23.72029],[-66.70212,-23.72155],[-66.70658,-23.61965],[-66.78795,-23.6187]]]}},
+{"type":"Feature","properties":{"name":"Ponds north (Olaroz)"},"geometry":{"type":"Polygon","coordinates":[[[-66.78863,-23.53282],[-66.78829,-23.60679],[-66.72169,-23.60805],[-66.71688,-23.5281],[-66.78863,-23.53282]]]}},
+{"type":"Feature","properties":{"name":"Salar de Olaroz (wellfield)"},"geometry":{"type":"Polygon","coordinates":[[[-66.75842,-23.51834],[-66.68632,-23.59577],[-66.6283,-23.59577],[-66.56822,-23.38413],[-66.5744,-23.32827],[-66.76323,-23.33268],[-66.75842,-23.51834]]]}}
+]}

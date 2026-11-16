@@ -39,6 +39,24 @@
             "mean_hh_db": -16.93,
             "mean_hv_db": -21.71,
             "dark_ha": 29897.4
+          },
+          "Ponds south (Cauchari)": {
+            "valid_ha": 9628.0,
+            "mean_hh_db": -18.52,
+            "mean_hv_db": -22.67,
+            "dark_ha": 2655.5
+          },
+          "Ponds north (Olaroz)": {
+            "valid_ha": 6056.2,
+            "mean_hh_db": -18.03,
+            "mean_hv_db": -22.29,
+            "dark_ha": 1149.9
+          },
+          "Salar de Olaroz (wellfield)": {
+            "valid_ha": 47403.0,
+            "mean_hh_db": -18.87,
+            "mean_hv_db": -22.84,
+            "dark_ha": 19156.7
           }
         }
       }
@@ -72,6 +90,24 @@
             "mean_hh_db": -14.92,
             "mean_hv_db": -20.53,
             "dark_ha": 37936.9
+          },
+          "Ponds south (Cauchari)": {
+            "valid_ha": 9628.0,
+            "mean_hh_db": -18.77,
+            "mean_hv_db": -23.23,
+            "dark_ha": 4073.3
+          },
+          "Ponds north (Olaroz)": {
+            "valid_ha": 6056.2,
+            "mean_hh_db": -16.27,
+            "mean_hv_db": -21.97,
+            "dark_ha": 1149.3
+          },
+          "Salar de Olaroz (wellfield)": {
+            "valid_ha": 47403.0,
+            "mean_hh_db": -19.53,
+            "mean_hv_db": -23.33,
+            "dark_ha": 25760.8
           }
         }
       }
@@ -105,6 +141,24 @@
             "mean_hh_db": -17.32,
             "mean_hv_db": -22.99,
             "dark_ha": 40089.0
+          },
+          "Ponds south (Cauchari)": {
+            "valid_ha": 9628.0,
+            "mean_hh_db": -19.65,
+            "mean_hv_db": -24.01,
+            "dark_ha": 4158.7
+          },
+          "Ponds north (Olaroz)": {
+            "valid_ha": 6056.2,
+            "mean_hh_db": -18.3,
+            "mean_hv_db": -23.62,
+            "dark_ha": 1267.8
+          },
+          "Salar de Olaroz (wellfield)": {
+            "valid_ha": 47403.0,
+            "mean_hh_db": -20.02,
+            "mean_hv_db": -24.1,
+            "dark_ha": 26160.4
           }
         }
       }
@@ -138,6 +192,24 @@
             "mean_hh_db": -16.97,
             "mean_hv_db": -21.95,
             "dark_ha": 32322.8
+          },
+          "Ponds south (Cauchari)": {
+            "valid_ha": 9628.0,
+            "mean_hh_db": -18.66,
+            "mean_hv_db": -22.91,
+            "dark_ha": 3033.1
+          },
+          "Ponds north (Olaroz)": {
+            "valid_ha": 6056.2,
+            "mean_hh_db": -18.03,
+            "mean_hv_db": -22.48,
+            "dark_ha": 1046.5
+          },
+          "Salar de Olaroz (wellfield)": {
+            "valid_ha": 47403.0,
+            "mean_hh_db": -19.13,
+            "mean_hv_db": -23.1,
+            "dark_ha": 20956.2
           }
         }
       }
@@ -234,6 +306,6 @@
       8
     ]
   },
-  "generated": "2026-11-15T23:38:46Z",
+  "generated": "2026-11-16T00:23:07Z",
   "precip": "data/precip.json"
 }
